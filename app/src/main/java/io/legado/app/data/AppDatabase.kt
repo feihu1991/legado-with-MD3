@@ -25,6 +25,7 @@ import io.legado.app.data.dao.TagGroupRuleDao
 import io.legado.app.data.dao.HomepageCustomSetDao
 import io.legado.app.data.dao.HomepageModuleDao
 import io.legado.app.data.dao.HttpTTSDao
+import io.legado.app.data.dao.CharacterVoiceDao
 import io.legado.app.data.dao.KeyboardAssistsDao
 import io.legado.app.data.dao.ReadRecordDao
 import io.legado.app.data.dao.ReplaceRuleDao
@@ -60,6 +61,7 @@ import io.legado.app.data.entities.TagGroupRule
 import io.legado.app.data.entities.HomepageCustomSet
 import io.legado.app.data.entities.HomepageModule
 import io.legado.app.data.entities.HttpTTS
+import io.legado.app.data.entities.CharacterVoice
 import io.legado.app.data.entities.KeyboardAssist
 import io.legado.app.data.entities.ReplaceRule
 import io.legado.app.data.entities.RssArticle
@@ -90,7 +92,7 @@ val appDb by lazy {
 }
 
 @Database(
-    version = 93,
+    version = 94,
     exportSchema = true,
     entities = [Book::class, BookGroup::class, BookSource::class, BookChapter::class,
         ReplaceRule::class, SearchBook::class, SearchKeyword::class, Cookie::class,
@@ -101,7 +103,8 @@ val appDb by lazy {
         SearchContentHistory::class, HomepageModule::class, HomepageCustomSet::class,
         HighlightRule::class, AiProviderProfile::class, AiModelProfile::class,
         AiTaskPreset::class, AiArtifact::class, AiChatConversation::class,
-        AiChatMessage::class, AiMemory::class, HighlightTagRule::class, TagGroupRule::class],
+        AiChatMessage::class, AiMemory::class, HighlightTagRule::class, TagGroupRule::class,
+        CharacterVoice::class],
     views = [BookSourcePart::class],
     autoMigrations = [
         AutoMigration(from = 43, to = 44),
@@ -153,7 +156,8 @@ val appDb by lazy {
         AutoMigration(from = 89, to = 90),
         AutoMigration(from = 90, to = 91),
         AutoMigration(from = 91, to = 92),
-        AutoMigration(from = 92, to = 93)
+        AutoMigration(from = 92, to = 93),
+        AutoMigration(from = 93, to = 94)
     ]
 )
 abstract class AppDatabase : RoomDatabase() {
@@ -189,6 +193,7 @@ abstract class AppDatabase : RoomDatabase() {
     abstract val aiArtifactDao: AiArtifactDao
     abstract val aiChatDao: AiChatDao
     abstract val aiMemoryDao: AiMemoryDao
+    abstract val characterVoiceDao: CharacterVoiceDao
 
     companion object {
 

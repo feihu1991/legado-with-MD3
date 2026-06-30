@@ -24,6 +24,7 @@ import io.legado.app.ui.book.read.sheet.DownloadSheet
 import io.legado.app.ui.book.read.sheet.EffectiveReplacesSheet
 import io.legado.app.ui.book.read.sheet.HighlightRuleConfigSheet
 import io.legado.app.ui.book.read.sheet.HttpTtsEditSheet
+import io.legado.app.ui.book.read.sheet.MiMoVoiceManageSheet
 import io.legado.app.ui.book.read.sheet.MoreConfigSheet
 import io.legado.app.ui.book.read.sheet.PageAnimConfigSheet
 import io.legado.app.ui.book.read.sheet.PageKeyConfigSheet
@@ -255,6 +256,12 @@ fun ReadBookScreen(
         state = state,
         onIntent = onIntent,
         onDismissRequest = dismissSheet,
+    )
+    MiMoVoiceManageSheet(
+        show = state.activeSheet is ReadBookSheet.MiMoVoiceManage,
+        onDismissRequest = {
+            onIntent(ReadBookIntent.ShowSheet(ReadBookSheet.ReadAloudConfig))
+        },
     )
     SpeakEngineConfigSheet(
         show = state.activeSheet is ReadBookSheet.SpeakEngineConfig,

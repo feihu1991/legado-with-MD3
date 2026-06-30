@@ -31,6 +31,7 @@ import androidx.compose.ui.unit.dp
 import io.legado.app.R
 import io.legado.app.data.entities.HttpTTS
 import io.legado.app.ui.book.read.ReadBookIntent
+import io.legado.app.ui.book.read.ReadBookSheet
 import io.legado.app.ui.book.read.ReadBookUiState
 import io.legado.app.ui.widget.components.AppTextField
 import io.legado.app.ui.widget.components.alert.AppAlertDialog
@@ -144,6 +145,14 @@ fun ReadAloudConfigSheet(
                 title = stringResource(R.string.clear_cache),
                 onClick = { onIntent(ReadBookIntent.ClearTtsCache) },
             )
+            // MiMo 多角色朗读
+            if (state.selectedTtsEngine == "mimo") {
+                TinyClickableSettingItem(
+                    title = "🎭 MiMo 角色音色管理",
+                    description = "配置多角色个性化音色",
+                    onClick = { onIntent(ReadBookIntent.ShowSheet(ReadBookSheet.MiMoVoiceManage)) },
+                )
+            }
         }
     }
 }

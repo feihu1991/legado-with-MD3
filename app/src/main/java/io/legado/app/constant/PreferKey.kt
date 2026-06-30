@@ -158,6 +158,8 @@ object PreferKey {
     const val webServiceWakeLock = "webServiceWakeLock"
     const val audioPlayWakeLock = "audioPlayWakeLock"
     const val readAloudWakeLock = "readAloudWakeLock"
+    const val mimoTtsApiKey = "mimo_tts_api_key"
+    const val mimoTtsBaseUrl = "mimo_tts_base_url"
     const val showLastUpdateTime = "showLastUpdateTime"
     const val showWaitUpCount = "showWaitUpCount"
     const val clearWebViewData = "clearWebViewData"

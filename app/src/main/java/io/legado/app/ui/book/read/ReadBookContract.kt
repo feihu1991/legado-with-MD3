@@ -689,6 +689,7 @@ sealed interface ReadBookSheet {
     data object MoreConfig : ReadBookSheet
     data object BgTextConfig : ReadBookSheet
     data object ReadAloudConfig : ReadBookSheet
+    data object MiMoVoiceManage : ReadBookSheet
     data object SpeakEngineConfig : ReadBookSheet
     data class HttpTtsEdit(val engineId: Long? = null) : ReadBookSheet
     data object PreDownloadConfig : ReadBookSheet

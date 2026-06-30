@@ -1205,6 +1205,13 @@ class ReadBookViewModel(
         execute {
             buildList {
                 add(ReadBookTtsEngineItem(context.getString(R.string.system_tts), null))
+                // MiMo 多角色朗读引擎
+                add(
+                    ReadBookTtsEngineItem(
+                        title = "🎭 MiMo 多角色朗读",
+                        value = "mimo",
+                    )
+                )
                 sysEngines.forEach { engine ->
                     add(
                         ReadBookTtsEngineItem(
@@ -1395,6 +1402,9 @@ class ReadBookViewModel(
     private fun computeSpeakEngineName(): String {
         val ttsEngine = ReadAloud.ttsEngine
             ?: return context.getString(R.string.system_tts)
+        if (ttsEngine == "mimo") {
+            return "🎭 MiMo 多角色朗读"
+        }
         if (StringUtils.isNumeric(ttsEngine)) {
             return appDb.httpTTSDao.getName(ttsEngine.toLong())
                 ?: context.getString(R.string.system_tts)
