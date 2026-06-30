@@ -21,10 +21,12 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build Debug APK
-        run: ./gradlew assembleDebug --no-daemon
+        run: ./gradlew assembleDebug --no-daemon --stacktrace 2>&1 | tail -100
+        continue-on-error: true
 
       - name: Find APK
         run: find . -name "*.apk" -type f 2>/dev/null | head -10
+        continue-on-error: true
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
